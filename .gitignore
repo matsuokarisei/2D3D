@@ -1,0 +1,29 @@
+# Unityが自動生成するフォルダやファイル（管理不要）
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Mm]emoryCaptures/
+
+# ビルドファイル（生成されるだけ）
+*.apk
+*.aab
+*.unitypackage
+
+# エディタ系
+.vscode/
+.idea/
+*.csproj
+*.sln
+*.user
+*.pidb
+*.booproj
+
+# OSファイル
+.DS_Store
+Thumbs.db
+
+# Crashレポートなど
+*.log
+sysinfo.txt
