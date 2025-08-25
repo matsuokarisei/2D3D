@@ -12,7 +12,8 @@ public class Player3D : MonoBehaviour
     private float _jumpSpeed;
     private Vector2 _moveInput;
     private Rigidbody _rigid;
-    private bool _bJump;
+    private ScriptChanger changer; // 共有元参照
+    public void SetChanger(ScriptChanger sc) => changer = sc;
 
     // Start is called before the first frame update
     void Start()
@@ -55,14 +56,14 @@ public class Player3D : MonoBehaviour
         // 下方向にRaycastして床に当たるかチェック
         if (Physics.Raycast(rayOrigin, Vector3.down, out RaycastHit hit, rayDistance, layerMask))
         {
-            if (_bJump && hit.collider.CompareTag("floor"))
+            if (changer.IsJumping && hit.collider.CompareTag("floor"))
             {
-                _bJump = false; // 着地と判定
+                changer.IsJumping = false; // 着地と判定
             }
         }
         else
         {
-            _bJump = true; // 床に触れていない = 空中
+            changer.IsJumping = true; // 床に触れていない = 空中
         }
     }
 
@@ -75,7 +76,7 @@ public class Player3D : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         //もしジャンプ操作が行われていないまたは、_bJumpがtrueの時はreturn以降の処理を行わない
-        if (!context.performed || _bJump)
+        if (!context.performed || changer.IsJumping)
         {
             return;
         }

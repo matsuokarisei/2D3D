@@ -8,6 +8,8 @@ public class ScriptChanger : MonoBehaviour
     private Player3D _moveTypeB;
 
     private bool move = true;
+
+    public bool IsJumping { get; set; }
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,10 @@ public class ScriptChanger : MonoBehaviour
         // ‰Šúó‘Ôİ’è
         _moveTypeA.enabled = move;
         _moveTypeB.enabled = !move;
+
+        // ScriptChanger‚ÌQÆ‚ğ“n‚·
+        _moveTypeA.SetChanger(this);
+        _moveTypeB.SetChanger(this);
     }
 
     // Update is called once per frame
