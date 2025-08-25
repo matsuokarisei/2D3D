@@ -30,14 +30,14 @@ public class Player3D : MonoBehaviour
     private void FixedUpdate()
     {
         // ‘O•û
-        if (_moveInput.y > DeadZone || _moveInput.y < -DeadZone)
+        if (Mathf.Abs(_moveInput.y) > DeadZone)
         {
-            transform.Translate(Vector3.forward * _moveInput.y * Time.deltaTime);
+            transform.Translate(Vector3.forward * _moveInput.y * MoveSpeed * Time.deltaTime);
         }
         // ¶‰E
-        if (_moveInput.x > DeadZone || _moveInput.x < -DeadZone)
+        if (Mathf.Abs(_moveInput.x) > DeadZone)
         {
-            transform.Translate(Vector3.right * _moveInput.x * Time.deltaTime);
+            transform.Translate(Vector3.right * _moveInput.x * MoveSpeed * Time.deltaTime);
         }
     }
 

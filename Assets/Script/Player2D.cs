@@ -35,9 +35,9 @@ public class Player2D : MonoBehaviour
         //    transform.Translate(Vector3.forward * moveInput.y * Time.deltaTime);
         //}
         // ¶‰E
-        if (_moveInput.x > DeadZone || _moveInput.x < -DeadZone)
+        if (Mathf.Abs(_moveInput.x) > DeadZone)
         {
-            transform.Translate(Vector3.right * _moveInput.x * Time.deltaTime);
+            transform.Translate(Vector3.right * _moveInput.x * MoveSpeed * Time.deltaTime);
         }
     }
 
